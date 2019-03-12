@@ -14,7 +14,6 @@ def get_emails_application():
 def show_results():
     text = request.args.get('text', "", type=str)
     emails = get_emails(text)
-    print(text)
 
     return jsonify(result=emails)
 
@@ -27,7 +26,6 @@ def get_emails(text):
 
     for email in emails:
         emailList.append(email)
-        print(email)
 
     return emailList
 
