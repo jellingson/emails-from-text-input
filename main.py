@@ -22,12 +22,12 @@ def get_emails(text):
     regex = re.compile('[^\s]+@[^\s]+\.[^,;:\s]+')
 
     emails = regex.findall(text)
-    emailList = []
+    email_list = []
 
     for email in emails:
-        emailList.append(email)
+        email_list.append(email)
 
-    return emailList
+    return email_list
 
 
 if __name__ == "__main__":
