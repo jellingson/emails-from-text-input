@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Emails From Text</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+        $(function() {
+            $('#submit').bind('click', function() {
+                $.getJSON("{{url_for('show_results')}}", {
+                    text: $('textarea[name="text-area"]').val(),
+                }, function(data) {
+                    let li;
+                    let emails = data.result;
+                    $("li").remove();
+                    for(let i = 0; i < emails.length; i++){
+                        li = document.createElement("li");
+                        li.appendChild(document.createTextNode(emails[i]));
+                        $("#results").append(li);
+                    }
+                    console.log(data.result);
+                });
+                return false;
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <h1>Get All Emails From Text</h1>
+    <p>Paste text here:</p>
+    <textarea id="user-text" name="text-area" class="form-control"></textarea>
+    <button id="submit">Get Emails</button>
+    <ul id="results"></ul>
+
+</body>
+</html>
